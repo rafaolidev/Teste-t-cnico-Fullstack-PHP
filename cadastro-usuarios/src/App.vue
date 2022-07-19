@@ -144,15 +144,25 @@ export default {
     },
 
 		submitForm(data){
-			const userApi = new UserRepository();
 
-      userApi.createUser(data).then((resp) => {
-				console.log(data)
-        if (resp.status == 200) {
-					this.getUsersData();
-					console.log(resp.data.message);
-        }
-      });
+			const userApi = new UserRepository();
+			
+			let passwordUnmatch = false;
+
+			if (data.password != data.passwordConfirm) {
+				passwordUnmatch =true;
+			}
+
+			if (passwordUnmatch == false) {
+
+				userApi.createUser(data)
+				this.getUsersData();
+				
+			}else{
+				console.log('password diferente da confirmação')
+			}
+
+      
 
     }
 		

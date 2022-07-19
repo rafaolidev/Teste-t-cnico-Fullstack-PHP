@@ -24,10 +24,10 @@ export default class UserRepository {
         email:user.email,
         user_name:user.userName,
         phone:user.phone,
-        password:user.password
+        password:user.password,
+        xp:user.xpProf,
+        academic: user.academic
     }
-        
-    
     })
     .then(function (response) {
     console.log(response);
